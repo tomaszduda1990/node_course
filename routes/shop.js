@@ -7,8 +7,14 @@ const admin = require("./admin");
 const router = express.Router();
 
 router.get("/", (req, res, next) => {
-  console.log(admin.products);
-  res.render("shop", { prods: admin.products, pageTitle: "SHOP", path: "/" });
+  res.render("shop", {
+    prods: admin.products,
+    pageTitle: "SHOP",
+    path: "/",
+    hasProducts: admin.products.length > 0,
+    productCSS: true,
+    activeShop: true,
+  });
   //res.sendFile(path.join(rootDir, "views", "shop.pug"));
 });
 
